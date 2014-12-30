@@ -32,7 +32,6 @@ jmp_buf env;
 pid_t ret_pid,child_pid;
 int precision = 3,limit = 0,print = 1;
 int main(int argc, char** argv){
-    printf("This is hw2 by Ze Li, zli48, 676755673\n");
     if(argc == 2){
         precision = atoi(argv[1]);
     }
@@ -43,7 +42,7 @@ int main(int argc, char** argv){
         signal(SIGINT,sigint_handler);
         signal(SIGTSTP,sigstop_handler);
         int i = 0;
-        printf("zli48$");
+        printf("shell$");
         char**args = malloc(sizeof(char*)*M);
         char* line = malloc(sizeof(char)*N);
         getline(&line,&n,stdin);
@@ -90,7 +89,7 @@ int main(int argc, char** argv){
                 if(exit_status > 128){
                     exit_status -= 256;
                 }
-                printf("zli48$Child %d return - %d\n",child_pid, WEXITSTATUS(status));
+                printf("shell$Child %d return - %d\n",child_pid, WEXITSTATUS(status));
                 
             }else{
                 if(WIFSIGNALED(status)){

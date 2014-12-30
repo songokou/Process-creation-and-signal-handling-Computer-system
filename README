@@ -1,0 +1,15 @@
+
+There is a makefile which will help you to make the file needed.
+If you want to open the shell, type 
+$make shell
+$./shell precision//integer, where this integer is the desired digits the monte carlo program is supposed to be.
+Then in the shell,
+
+shell$make monte
+shell$./monte alarm//float, where it would be the max seconds it will execute for
+
+In the shell, you will be able to use the shell commands other than cd.
+
+NOTE in this shell, when you start the monte carlo program or once you pressed Ctrl+C or Ctrl+Z, if you want to execute monte, you’ll have to type “make monte” again.
+
+You could type “make clean” to delete the executables.
