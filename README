@@ -1,5 +1,19 @@
+This project is used to create a simple shell(the parent), and then compile and execute monte carlo program(child) within the shell. 
+fork() will be called to create child processes.
+execvp() will be used to execute the process.
+In the shell, signal() will be called to catch SIGINT, SIGSTP, SIGALRM, SIGSEGV, SIGUSR1, SIGUSR2.
+SIGSEGV is used to simulate the Monte Carlo program. A line 
+"int *addr = (int*)rand();" was written purposely so random address will be assigned to addr and segmentation fault will occur. 
+By using signal(), SIGSEGV is caught and by using sigsetjmp() and siglongjmp(), we could repeat the same lines and count the times
+of seg faults and total repeats without termination/abortion from OS.
+When certain number of repeats (ULONG_MAX ) has been reached, the child program sends SIGUSR2 to parent, parent sends back SIGUSR1
+to child and child quit the program. 
 
-There is a makefile which will help you to make the file needed.
+
+
+
+
+There is a readme which will help you to make the file needed.
 If you want to open the shell, type 
 $make shell
 $./shell precision//integer, where this integer is the desired digits the monte carlo program is supposed to be.
